@@ -295,9 +295,8 @@
         onEachFeature : function(feature,layer) {
           var props = feature.properties;
           var locationPopup =
-            "<h2>" + props.resource_t + "</h2>" + "<b>" + props.org_name + "</b>" +
-            "<p>" + props.address + "<br><br><b>Contact Information:  <br></b>" + props.contact_na + "<br>" +
-            props.contact_ti + "<br>" + props.phone + "<br><a href='mailto:" + props.email + "'>" + props.email + "</a></p></p>";
+            "<h3>" + props.org_name + "</h3><br><b>Sales Outlet(s):  </b>" + props.optional_r + "<br><br><a href='https://" + props.phone + "'>" + props.phone
+            + "</a><br><b>email: </b><a href='mailto:" + props.email + "'>" + props.email + "</a></p></p>";
             layer.bindPopup(locationPopup);
         }
       }).addTo(map);
