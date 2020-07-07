@@ -261,53 +261,12 @@
     };
 
     // set icons for layer types
-    var greenhouseIcon = L.icon({
-        iconUrl: "./icons/flower.png",
+    var cutflowerIcon = L.icon({
+        iconUrl: "./icons/cutflower.png",
         iconSize: [35, 35],
         popupAnchor: [0, -15]
     });
 
-    var equipmentIcon = L.icon({
-        iconUrl: "./icons/equipment.png",
-        iconSize: [35, 25],
-        popupAnchor: [0, -15]
-    });
-
-    var auctionIcon = L.icon({
-        iconUrl: "./icons/auction.png",
-        iconSize: [35, 35],
-        popupAnchor: [0, -15]
-    });
-
-    var marketIcon = L.icon({
-        iconUrl: "./icons/shop.png",
-        iconSize: [35, 35],
-        popupAnchor: [0, -15]
-    });
-
-    var hortsupplyIcon = L.icon({
-        iconUrl: "./icons/hortsupply.png",
-        iconSize: [35, 35],
-        popupAnchor: [0, -15]
-    });
-
-    var farmstandIcon = L.icon({
-        iconUrl: "./icons/farmstand.png",
-        iconSize: [35, 35],
-        popupAnchor: [0, -15]
-    });
-
-    var agtourismIcon = L.icon({
-        iconUrl: "./icons/agtourism.png",
-        iconSize: [35, 35],
-        popupAnchor: [0, -15]
-    });
-
-    var waterlabIcon = L.icon({
-        iconUrl: "./icons/waterlab.png",
-        iconSize: [35, 35],
-        popupAnchor: [0, -15]
-    });
 
     // load KY county polygons
   $.getJSON("./data/ky-counties.geojson", function(counties) {
@@ -328,25 +287,10 @@
 
     // create layer groups by resource type
 
-    var marketLayer = L.geoJson(data, {
-      filter: marketFilter,
+    var cutflowerLayer = L.geoJson(data, {
+      filter: cutflowerFilter,
       pointToLayer: function(feature,latlng) {
-          return L.marker(latlng, {icon: marketIcon});
-        },
-        onEachFeature : function(feature,layer) {
-          var props = feature.properties;
-          var locationPopup =
-            "<h2>" + props.resource_t + "</h2>" + "<b>" + props.org_name + "</b>" +
-            "<p>" + props.address + "<br><br><b>Contact Information:  <br></b>" + props.contact_na + "<br>" +
-            props.phone + "<br><a href='mailto:" + props.email + "'>" + props.email + "</a><br><a href='" + props.optional_r + "'>" + props.optional_r + "</a></p></p>";
-            layer.bindPopup(locationPopup);
-        }
-      }).addTo(map);
-
-    var greenhouseLayer = L.geoJson(data, {
-      filter: greenhouseFilter,
-      pointToLayer: function(feature,latlng) {
-          return L.marker(latlng, {icon: greenhouseIcon});
+          return L.marker(latlng, {icon: cutflowerIcon});
         },
         onEachFeature : function(feature,layer) {
           var props = feature.properties;
@@ -358,123 +302,31 @@
         }
       }).addTo(map);
 
-    var equipmentLayer = L.geoJson(data, {
-      filter: equipmentFilter,
-        pointToLayer: function(feature,latlng) {
-            return L.marker(latlng, {icon: equipmentIcon});
-          },
-          onEachFeature : function(feature,layer) {
-            var props = feature.properties;
-            var locationPopup =
-              "<h2>" + props.resource_t + "</h2>" +  props.optional_r + "<br><b>" + props.org_name + "</b>" +
-              "<p>" + props.address + "<br><br><b>Contact Information:  <br></b>" + props.contact_na + "<br>" +
-              props.contact_ti + "<br>" + props.phone + "<br><a href='mailto:" + props.email + "'>" + props.email + "</a></p></p>";
-              layer.bindPopup(locationPopup)
-          }
-      }).addTo(map);
-
-      var auctionLayer = L.geoJson(data, {
-        filter: auctionFilter,
-          pointToLayer: function(feature,latlng) {
-              return L.marker(latlng, {icon: auctionIcon});
-            },
-            onEachFeature : function(feature,layer) {
-              var props = feature.properties;
-              var locationPopup =
-                "<h2>" + props.resource_t + "</h2><br><b>" + props.org_name + "</b>" +
-                "<p>" + props.address + "<br><br><b>Contact Information:  <br></b>" + props.contact_na + "<br>" +
-                props.contact_ti + "<br>" + props.phone + "<br>" + props.optional_r + "<br><a href='" + props.email + "'>Auction Schedule and Price Reports</a></p></p>";
-                layer.bindPopup(locationPopup)
-            }
-        }).addTo(map);
-
-        var hortsupplyLayer = L.geoJson(data, {
-          filter: hortsupplyFilter,
-            pointToLayer: function(feature,latlng) {
-                return L.marker(latlng, {icon: hortsupplyIcon});
-              },
-              onEachFeature : function(feature,layer) {
-                var props = feature.properties;
-                var locationPopup =
-                "<h2>" + props.resource_t + "</h2><b>" + props.org_name + "</b><br>" + props.optional_r +
-                "<p>" + props.address + "<br><br><b>Contact Information:  <br></b>" + props.contact_na + "<br>" + props.phone
-                 + "</a></p></p>";
-                  layer.bindPopup(locationPopup)
-              }
-          }).addTo(map);
-
-          var farmstandLayer = L.geoJson(data, {
-            filter: farmstandFilter,
-              pointToLayer: function(feature,latlng) {
-                  return L.marker(latlng, {icon: farmstandIcon});
-                },
-                onEachFeature : function(feature,layer) {
-                  var props = feature.properties;
-                  var locationPopup =
-                    "<h2>" + props.resource_t + "</h2><br><b>" + props.org_name + "</b>" +
-                    "<p>" + props.address + "<br><br><b>Contact Information:  <br></b>" + props.contact_na + "<br>" + props.phone +
-                    "<br><br><a href='mailto:" + props.email + "'>" + props.email + "</a><br><a href='http://" + props.optional_r + "'>" +
-                    props.optional_r + "</a></p></p>";
-                    layer.bindPopup(locationPopup)
-                }
-            }).addTo(map);
-
-            var agtourismLayer = L.geoJson(data, {
-              filter: agtourismFilter,
-                pointToLayer: function(feature,latlng) {
-                    return L.marker(latlng, {icon: agtourismIcon});
-                  },
-                  onEachFeature : function(feature,layer) {
-                    var props = feature.properties;
-                    var locationPopup =
-                      "<h2>" + props.resource_t + "</h2><br><b>" + props.org_name + "</b>" +
-                      "<p>" + props.address + "<br><br><b>Contact Information:  <br></b>" + props.contact_na + "<br>" + props.phone +
-                      "<br><br><a href='mailto:" + props.email + "'>" + props.email + "</a><br><a href='http://" + props.optional_r + "'>" +
-                      props.optional_r + "</a></p></p>";
-                      layer.bindPopup(locationPopup)
-                  }
-              }).addTo(map);
-
-              var waterlabLayer = L.geoJson(data, {
-                filter: waterlabFilter,
-                  pointToLayer: function(feature,latlng) {
-                      return L.marker(latlng, {icon: waterlabIcon});
-                    },
-                    onEachFeature : function(feature,layer) {
-                      var props = feature.properties;
-                      var locationPopup =
-                        "<h2>" + props.resource_t + "</h2><br><b>" + props.org_name + "</b><br><br>" + props.address + "<br><br>Minimum Invoice Amount:  <b><font color='red'>" + props.contact_ti +
-                        "<br></font><br>Sampling Notes:<br></b>" + props.optional_r + "</font><p><b>Contact Information:  <br></b></b>" + props.phone + "<br><a href='mailto:" +
-                        props.email + "'>" + props.email + "</a></p>";
-                        layer.bindPopup(locationPopup)
-                    }
-                }).addTo(map);
-
     // create object of all layers
-    var geoJsonLayers = {
-          marketLayer: marketLayer,
-          greenhouseLayer: greenhouseLayer,
-          equipmentLayer: equipmentLayer,
-          auctionLayer: auctionLayer,
-          hortsupplyLayer: hortsupplyLayer,
-          waterlabLayer: waterlabLayer,
-          farmstandLayer: farmstandLayer,
-          agtourismLayer: agtourismLayer,
-    };
+    // var geoJsonLayers = {
+    //       marketLayer: marketLayer,
+    //       greenhouseLayer: greenhouseLayer,
+    //       equipmentLayer: equipmentLayer,
+    //       auctionLayer: auctionLayer,
+    //       hortsupplyLayer: hortsupplyLayer,
+    //       waterlabLayer: waterlabLayer,
+    //       farmstandLayer: farmstandLayer,
+    //       agtourismLayer: agtourismLayer,
+    // };
 
     // legend for turning on/off layers
-    var sourcesLabels = {
-      "<img src='icons/flower.png' height='35' width='35'><b>&nbsp;Educational Greenhouse</b>": geoJsonLayers.greenhouseLayer,
-      "<img src='icons/shop.png' height='34' width='35'><b>&nbsp;Farmers' Market</b>": geoJsonLayers.marketLayer,
-      "<img src='icons/auction.png' height='34' width='35'><b>&nbsp;Produce Auction</b>": geoJsonLayers.auctionLayer,
-      "<img src='icons/equipment.png' height='29' width='39'><b>&nbsp;Shared Equipment</b><br><br>": geoJsonLayers.equipmentLayer,
-      "<img src='icons/hortsupply.png' height='39' width='39'><b>&nbsp;Horticultural Supply Store</b>": geoJsonLayers.hortsupplyLayer,
-      "<img src='icons/waterlab.png' height='39' width='39'><b>&nbsp;Water Testing Lab</b>": geoJsonLayers.waterlabLayer,
-      "<img src='icons/farmstand.png' height='36' width='36'><b>&nbsp;Roadside Market</b>": geoJsonLayers.farmstandLayer,
-      "<img src='icons/agtourism.png' height='36' width='36'><b>&nbsp;Agritourism Venue</b>": geoJsonLayers.agtourismLayer,
-    };
+    // var sourcesLabels = {
+    //   "<img src='icons/flower.png' height='35' width='35'><b>&nbsp;Educational Greenhouse</b>": geoJsonLayers.greenhouseLayer,
+    //   "<img src='icons/shop.png' height='34' width='35'><b>&nbsp;Farmers' Market</b>": geoJsonLayers.marketLayer,
+    //   "<img src='icons/auction.png' height='34' width='35'><b>&nbsp;Produce Auction</b>": geoJsonLayers.auctionLayer,
+    //   "<img src='icons/equipment.png' height='29' width='39'><b>&nbsp;Shared Equipment</b><br><br>": geoJsonLayers.equipmentLayer,
+    //   "<img src='icons/hortsupply.png' height='39' width='39'><b>&nbsp;Horticultural Supply Store</b>": geoJsonLayers.hortsupplyLayer,
+    //   "<img src='icons/waterlab.png' height='39' width='39'><b>&nbsp;Water Testing Lab</b>": geoJsonLayers.waterlabLayer,
+    //   "<img src='icons/farmstand.png' height='36' width='36'><b>&nbsp;Roadside Market</b>": geoJsonLayers.farmstandLayer,
+    //   "<img src='icons/agtourism.png' height='36' width='36'><b>&nbsp;Agritourism Venue</b>": geoJsonLayers.agtourismLayer,
+    // };
 
-    L.control.layers(null, sourcesLabels, { collapsed:true }).addTo(map);
+    // L.control.layers(null, sourcesLabels, { collapsed:true }).addTo(map);
 
     // info modal code
     var modal = document.getElementById('myModal');
@@ -499,36 +351,8 @@
 
 
     // filtering functions for creating multiple layers from single geojson
-    function greenhouseFilter(feature) {
-      if (feature.properties.resource_t === "Educational Greenhouse") return true
-    }
-
-    function equipmentFilter(feature) {
-      if (feature.properties.resource_t === "Shared Equipment") return true
-    }
-
-    function auctionFilter(feature) {
-      if (feature.properties.resource_t === "Produce Auction") return true
-    }
-
-    function marketFilter(feature) {
-      if (feature.properties.resource_t === "Farmers' Market") return true
-    }
-
-    function hortsupplyFilter(feature) {
-      if (feature.properties.resource_t === "Horticulture Supply") return true
-    }
-
-    function farmstandFilter(feature) {
-      if (feature.properties.resource_t === "Roadside Stand") return true
-    }
-
-    function agtourismFilter(feature) {
-      if (feature.properties.resource_t === "Ag Tourism Venue") return true
-    }
-
-    function waterlabFilter(feature) {
-      if (feature.properties.resource_t === "Water Testing Lab") return true
+    function cutflowerFilter(feature) {
+      if (feature.properties.resource_t === "Cut Flower Grower") return true
     }
 
   } // end drawMap()
