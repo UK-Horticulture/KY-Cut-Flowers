@@ -177,7 +177,7 @@
 <body>
 
   <section id="title">
-    <b>Geographic Horticulture Directory of Kentucky</b>
+    <b>Kentucky Cut Flower Grower Directory</b>
   </section>
 
   <div id="map" class='viewport-full viewport-full-ml'></div>
@@ -192,28 +192,13 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <p><h2>About This Map</h2><br>
-        This interactive map shows the locations of resources related to Horticultural Activity
-        across the Commonwealth of Kentucky.</p><br>
+        This interactive map shows the approximate locations of cut flower growers across the Commonwealth of Kentucky.</p><br>
         <h2>Using This Map</h2><br>
         <p><b>Clicking/tapping</b> an icon on the map shows shows detail.</p><br>
         <p>The +/- buttons at the top left <b>zoom in and out</b>, as does the mouse wheel, and standard mobile gestures.</p><br>
-        <p>Map <b>resources can be turned on and off</b> by type in the <b>legend at the top right</b>, which will appear after bringing the mouse to or tapping on the <b>Map Layer Icon</b> -> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="images/layers.png"> </p><br>
-        <!-- <p>The <b>search box</b> allows users to enter a physical address, city name, or zipcode to <b>place a marker</b>.</p><br> -->
         <h2>Data Sources</h2><br>
-      <p>The primary data source is the <a href="https://agpolicy.ky.gov/Pages/default.aspx" target="_blank">Governor's
-        Office of Agricultural Policy</a> and the <a href="http://www.kyagr.com/" target="blank">Kentucky Department of Agriculture</a>.<br><br>
-        <h3>&nbsp; &nbsp; &nbsp;Specific Dataset Information</h3>
-        <ul>
-          <li><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Educational Greenhouses</b> - provided by KY-GOAP, March 2018</li>
-          <li><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Farmers' Markets</b> - provided by KDA, June 2018</li>
-          <li><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Produce Auctions</b> - provided by UK CCD, July 2018 <a href="http://www.uky.edu/ccd/pricereports/kypa" target="_blank"><img src="info-tiny.png"></a></li>
-          <li><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Shared Equipment</b> - data provided by KY-GOAP, March 2018 <a href="https://agpolicy.ky.gov/funds/Pages/program-portal.aspx" target="_blank"><img src="info-tiny.png"></a></li>
-          <li><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Roadside Farmstands</b> - data provided by KDA, September 2018 <a href="https://www.kyfb.com/federation/roadside-farm-markets/roadside-farm-market-owners/" target="_blank"><img src="info-tiny.png"></a></li>
-          <li><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Agritourism Venue</b> - data provided by KDA, September 2018 <a href="http://www.kyagr.com/marketing/agritourism.html" target="_blank"><img src="info-tiny.png"></a></li>
-          <li><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Water Testing Lab</b> - data provided by UK Food Connection <a href="https://foodconnection.ca.uky.edu/" target="_blank"><img src="info-tiny.png"></a>
-            <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;and the UK Food Systems Innovation Center, October 2018 <a href="http://www.uky.edu/fsic/" target="_blank"><img src="info-tiny.png"></a></li>
-        </ul><br>
-        </p>
+          <p>The primary data source is the <a href="https://kyhortcouncil.org/" target="_blank">Kentucky Horticulture Council</a>.<br><br>
+          </p>
         <p><h2>Funding and Support</h2><br><center>
           <a href="https://agpolicy.ky.gov/board/Pages/default.aspx" target="_blank"><img src="images/kadf-logo-footer.gif" hspace="20" vspace="20" border="5"></a>
            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -328,7 +313,7 @@
   $.getJSON("./data/ky-counties.geojson", function(counties) {
 
         // load CSV file
-        omnivore.csv('data/GeocodeHortDirectory.csv')
+        omnivore.csv('data/FlowerGrowerDirectory.csv')
         .on('ready', function(e) {
             drawMap(e.target.toGeoJSON());
             addDataToMap(counties, countyStyle, map);
