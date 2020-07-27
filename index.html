@@ -272,7 +272,7 @@
   $.getJSON("./data/ky-counties.geojson", function(counties) {
 
         // load CSV file
-        omnivore.csv('data/FlowerGrowerDirectory.csv')
+        omnivore.csv('data/FlowerGrowerDirectoryNew.csv')
         .on('ready', function(e) {
             drawMap(e.target.toGeoJSON());
             addDataToMap(counties, countyStyle, map);
@@ -283,9 +283,11 @@
 
   });
 
-  function drawMap(data) {
+    function drawMap(data) {
 
     // create layer groups by resource type
+
+    console.log(data);
 
     var cutflowerLayer = L.geoJson(data, {
       filter: cutflowerFilter,
@@ -295,8 +297,11 @@
         onEachFeature : function(feature,layer) {
           var props = feature.properties;
           var locationPopup =
-            "<h3>" + props.org_name + "</h3><br><b>Sales Outlet(s):  </b>" + props.optional_r + "<br><br><a href='https://" + props.phone + "'>" + props.phone
-            + "</a><br><b>email: </b><a href='mailto:" + props.email + "'>" + props.email + "</a></p></p>";
+            "<h3>" + props.org_name + "</h3><br><b>Sales Outlet(s):  </b>" + props.optional_r + "<br>"
+            + "<br><b>Social Media:</b>  <BR><a href='" + props.Facebook + "'><img src='" + props.fbIcon + "'></a>   "
+            + "<a href='" + props.Instagram + "'><img src='" + props.instaIcon + "'></a>"
+            + "<br><br><a href='" + props.phone + "'>" + props.phone + "</a><br><a href='mailto:" + props.email + "'>" + props.email
+            + "</a></p></p>";
             layer.bindPopup(locationPopup);
         }
       }).addTo(map);
