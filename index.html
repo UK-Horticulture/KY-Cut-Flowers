@@ -262,7 +262,7 @@
 
     // set icons for layer types
     var cutflowerIcon = L.icon({
-        iconUrl: "./icons/cutflower.png",
+        iconUrl: "./icons/cutflower-blue.png",
         iconSize: [35, 35],
         popupAnchor: [0, -15]
     });
@@ -272,7 +272,7 @@
   $.getJSON("./data/ky-counties.geojson", function(counties) {
 
         // load CSV file
-        omnivore.csv('data/FlowerGrowerDirectoryNew.csv')
+        omnivore.csv('data/FlowerGrowerDirectory2021.csv')
         .on('ready', function(e) {
             drawMap(e.target.toGeoJSON());
             addDataToMap(counties, countyStyle, map);
@@ -297,10 +297,10 @@
         onEachFeature : function(feature,layer) {
           var props = feature.properties;
           var locationPopup =
-            "<h3>" + props.org_name + "</h3><br><b>Sales Outlet(s):  </b>" + props.optional_r + "<br>"
-            + "<br><b>Social Media:</b>  <BR><a href='" + props.Facebook + "'><img src='" + props.fbIcon + "'></a>   "
-            + "<a href='" + props.Instagram + "'><img src='" + props.instaIcon + "'></a>"
-            + "<br><br><a href='" + props.phone + "'>" + props.phone + "</a><br><a href='mailto:" + props.email + "'>" + props.email
+            "<h3>" + props.name + "</h3><br><b>Sales Outlet(s):  </b>" + props.markets + "<br>"
+            + "<br><b>Social Media:</b>  <BR><a href='" + props.facebook + "'><img src='" + props.fbIcon + "'></a>   "
+            + "<a href='" + props.instagram + "'><img src='" + props.instaIcon + "'></a>"
+            + "<br><br><a href='" + props.www + "'>" + props.www + "</a><br><a href='mailto:" + props.email + "'>" + props.email
             + "</a></p></p>";
             layer.bindPopup(locationPopup);
         }
@@ -356,7 +356,7 @@
 
     // filtering functions for creating multiple layers from single geojson
     function cutflowerFilter(feature) {
-      if (feature.properties.resource_t === "Cut Flower Grower") return true
+      if (feature.properties.type === "Cut Flower Grower") return true
     }
 
   } // end drawMap()
