@@ -262,7 +262,7 @@
 
     // set icons for layer types
     var cutflowerIcon = L.icon({
-        iconUrl: "./icons/cutflower-purple.png",
+        iconUrl: "./icons/cutflower-yellow.png",
         iconSize: [35, 35],
         popupAnchor: [0, -15]
     });
@@ -272,7 +272,7 @@
   $.getJSON("./data/ky-counties.geojson", function(counties) {
 
         // load CSV file
-        omnivore.csv('data/FlowerGrowerDirectory2022.csv')
+        omnivore.csv('data/FlowerGrowerDirectory2023.csv')
         .on('ready', function(e) {
             drawMap(e.target.toGeoJSON());
             addDataToMap(counties, countyStyle, map);
