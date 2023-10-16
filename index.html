@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
   <style>
   #map {
-    background: #448ee4;
+    background: #ffffff;
     width: 100%;
   }
   #title {
@@ -246,18 +246,18 @@
     var accessToken = 'pk.eyJ1Ijoia29uc29sdXMiLCJhIjoiY2pnd2d2dXJrMTk4MzMzcGRmNjl6enpmYyJ9.MC43t60Y6axGbi32YET_tA'
 
   // request a mapbox raster tile layer and add to map
-  L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.{ext}', {
-  	minZoom: 0,
-  	maxZoom: 18,
-	    ext: 'png'
-    }).addTo(map);
+  // L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.{ext}', {
+  // 	minZoom: 0,
+  // 	maxZoom: 18,
+	//     ext: 'png'
+  //   }).addTo(map);
 
   // set display style for county polygons
     var countyStyle = {
         "color": "#005d7e",
         "weight": 1,
-        "fillOpacity" : 0.05,
-        "opacity": 0.2
+        "fillOpacity" : 0.1,
+        "opacity": 0.5
     };
 
     // set icons for layer types
